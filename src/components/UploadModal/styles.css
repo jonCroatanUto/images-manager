@@ -1,0 +1,52 @@
+.modal-background {
+  position: fixed;
+  z-index: 10;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.track-upload {
+  background-color: var(--global-modal-color);
+  backdrop-filter: blur(10px);
+  padding: 2% 5% 2%;
+  position: absolute;
+  border-radius: 20px;
+  z-index: 100;
+  width: 50%;
+  /* transform: translate(-50%, -50%); */
+  border-radius: 1rem;
+  left: 25%;
+  top: 5%;
+}
+.spinnerWrapper {
+  margin: 10px 40%;
+}
+.cancel-button {
+  cursor: pointer;
+}
+
+.existing-image {
+  max-width: 200px;
+}
+.titleUpdate {
+  font-family: var(--global-font);
+  color: var(--global-color-font);
+  font-size: 80px;
+}
+.titleUpdateShort {
+  font-family: var(--global-font);
+  color: var(--global-color-font);
+  font-size: 40px;
+}
+@media (max-width: 425px) {
+  .track-upload {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .upload-separator > div {
+    margin-bottom: 2rem;
+  }
+}
