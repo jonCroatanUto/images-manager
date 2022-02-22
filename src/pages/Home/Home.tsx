@@ -1,5 +1,6 @@
 import React from "react";
+import UploadModal from "../../components/UploadModal";
 function Home() {
-  return <div>Home</div>;
+  return <UploadModal />;
 }
 export default Home;

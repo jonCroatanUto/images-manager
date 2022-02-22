@@ -1,27 +1,29 @@
 import React from "react";
 import "./inputTextStyles.css";
-function InputText(props: {
-  type: string;
-  id: string;
-  placeholder: string;
-  value: string;
-  handleChange: (e: any) => void;
-  label: string;
-}) {
+import { inputTextTypeProps } from "../../types";
+
+function InputText({
+  type,
+  id,
+  label,
+  value,
+  placeholder,
+  handleChange,
+}: inputTextTypeProps) {
   return (
     <>
       <div className="field">
         <input
           className="input-field"
-          type={props.type}
-          name={props.id}
-          id={props.id}
-          value={props.value}
-          placeholder={props.placeholder}
-          onChange={props.handleChange}
+          type={type}
+          name={id}
+          id={id}
+          value={value}
+          placeholder={placeholder}
+          onChange={handleChange}
         />
-        <label className="input-label" htmlFor={props.id}>
-          {props.label}
+        <label className="input-label" htmlFor={id}>
+          {label}
         </label>
       </div>
     </>
