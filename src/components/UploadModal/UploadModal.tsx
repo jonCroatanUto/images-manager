@@ -7,41 +7,44 @@ import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 import { Container, Row, Col } from "react-bootstrap";
 import {
-  unDisplayUploadAction,
-  realoadHomeAction,
-} from "../../redux/displaysReducer/action";
-import { uploadGif } from "../../services/serverCalls/index";
+  InputEventUploadFileInterface,
+  InputEventInputTextInterface,
+} from "../../types";
+// import {
+//   unDisplayUploadAction,
+//   realoadHomeAction,
+// } from "../../redux/displaysReducer/action";
+// import { uploadGif } from "../../services/serverCalls/index";
 import Spinner from "../../components/Spinner";
 import FileInput from "../FileInput";
 function UploadModal() {
-  const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.userReducer);
+  // const dispatch = useDispatch();
+  // const { data } = useSelector((state) => state.userReducer);
   const [isCharged, setIsCharged] = useState(false);
   const [isCharging, setIsCharging] = useState(false);
 
   const [ownerData, setOwnerData] = useState();
 
   const [fileData, setFileData] = useState({
-    owner: data.data._id,
+    owner: "data.data._id",
     title: "",
     author: "",
     genre: "",
     urlGif: "",
   });
   // const [file, setFile] = useState("");
-  function send(e) {
+  function send(e: React.FormEvent) {
     e.preventDefault();
     setIsCharging(true);
-    uploadGif(fileData).then((res) => {
-      dispatch(realoadHomeAction(true));
-      setIsCharging(false);
-      dispatch(unDisplayUploadAction());
-    });
+    // uploadGif(fileData).then((res) => {
+    //   dispatch(realoadHomeAction(true));
+    //   setIsCharging(false);
+    //   dispatch(unDisplayUploadAction());
+    // });
   }
-  function handleChange(e) {
+  function handleChange(e: InputEventInputTextInterface) {
     setFileData({
       ...fileData,
-
       [e.target.name]: e.target.value,
     });
   }
@@ -52,18 +55,20 @@ function UploadModal() {
   //   });
   // }
 
-  function handleGifUploadChange(e) {
-    // e.preventDefault();
+  function handleGifUploadChange(e: InputEventUploadFileInterface) {
+    //e.preventDefault();
     setIsCharging(true);
-    console.log(e.target.files[0]);
+
+    console.log("traget->", e.target.files[0]);
     const form = new FormData();
+
     form.append("file", e.target.files[0]);
     form.append("upload_preset", "ml_default");
     form.append("folder", "imageManager");
 
     axios
       .post(`https://api.cloudinary.com/v1_1/daiejrif5/image/upload/`, form)
-      .then((res) => {
+      .then((res: any) => {
         const { data } = res;
 
         setFileData({
@@ -75,27 +80,24 @@ function UploadModal() {
         console.log("reponse", fileData);
       });
   }
-  const options = [
-    { value: "Humor", label: "Humor" },
-    { value: "Films", label: "Films" },
-    { value: "Party", label: "Party" },
-    { value: "Drama", label: "Drama" },
-  ];
-  const customStyles = {
-    option: (provided) => ({
-      ...provided,
-      borderBottom: "1px dotted pink",
-      color: "green",
-      padding: 20,
-    }),
-  };
+  // const options = [
+  //   { value: "Humor", label: "Humor" },
+  //   { value: "Films", label: "Films" },
+  //   { value: "Party", label: "Party" },
+  //   { value: "Drama", label: "Drama" },
+  // ];
+  // const customStyles = {
+  //   option: (provided: any) => ({
+  //     ...provided,
+  //     borderBottom: "1px dotted pink",
+  //     color: "green",
+  //     padding: 20,
+  //   }),
+  // };
 
   return (
     <>
-      <div
-        onClick={() => dispatch(unDisplayUploadAction())}
-        className="modal-background"
-      ></div>
+      <div onClick={() => null} className="modal-background"></div>
 
       <div className="track-upload">
         <form onSubmit={send}>
@@ -149,7 +151,7 @@ function UploadModal() {
                           <FileInput
                             type="file"
                             name="file"
-                            handleChange={handleGifUploadChange}
+                            handleChange={(e) => handleGifUploadChange}
                           />
                         </Col>
                         <Col xs={3} md={3} lg={3}></Col>
@@ -163,20 +165,18 @@ function UploadModal() {
               {isCharged ? (
                 <>
                   <Col className="text-center">
-                    <Button title="SEND" type="submit" />
+                    <button type="submit">submit</button>
                   </Col>
                   <Col className="text-center">
-                    <Button
-                      handleEdit={() => dispatch(unDisplayUploadAction())}
+                    {/* <Button
+                      handleEdit={() => null}
                       title="CANCEL"
                       type="button"
-                    />
+                    /> */}
                   </Col>
                 </>
               ) : (
-                <Col className="text-center">
-                  <Button title="SEND" type="submit" />
-                </Col>
+                <Col className="text-center"></Col>
               )}
             </Row>
           </Container>
