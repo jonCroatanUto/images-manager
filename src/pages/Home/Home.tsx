@@ -4,8 +4,12 @@ import { getAllImages } from "../../api";
 import { Container, Row, Col } from "react-bootstrap";
 import ImageItem from "../../components/ImageItem";
 import { ImageParametersType } from "../../types";
-
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers";
 function Home() {
+  const { isUploadModalDisplayed } = useSelector(
+    (state: RootState) => state.modalReducer
+  );
   const [imagesData, setImagesData] = useState<ImageParametersType[]>([]);
   const [isDataSet, setisDataSet] = useState(false);
   useEffect(() => {
@@ -15,6 +19,7 @@ function Home() {
       setisDataSet(true);
     });
   }, []);
+
   function debug() {
     console.log(imagesData);
   }
@@ -43,6 +48,7 @@ function Home() {
           )}
         </Row>
       </Container>
+      {isUploadModalDisplayed ? <UploadModal /> : <div></div>}
     </>
   );
 }

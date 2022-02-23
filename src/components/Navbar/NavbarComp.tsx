@@ -1,6 +1,12 @@
 import React from "react";
-import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
+import { Navbar, Container, NavDropdown, Nav, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { displayUploadAction } from "../../redux/modalReducer/actions";
 function NavbarComp() {
+  const dispatch = useDispatch();
+  // function displayUploadModal() {
+  //   dispatch(displayUploadAction());
+  // }
   return (
     <div style={{ marginBottom: "50px" }}>
       <Navbar bg="light" expand="lg">
@@ -11,6 +17,9 @@ function NavbarComp() {
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="#link">Diferent Page</Nav.Link>
+              <Button onClick={() => dispatch(displayUploadAction())}>
+                Upload Image
+              </Button>
               <NavDropdown title="Identify" id="basic-nav-dropdown">
                 <NavDropdown.Item>Login</NavDropdown.Item>
                 <NavDropdown.Item>Register</NavDropdown.Item>
