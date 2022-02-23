@@ -34,6 +34,22 @@ export interface updateApiCallType {
   author: string;
   title: string;
 }
+export interface ItemGridParametersType {
+  id: string;
+  title: string;
+  urlImage: string;
+}
+export interface ImageParametersType {
+  author: string;
+  createdAt: string;
+  genre: string;
+  title: string;
+  totalLikes: [];
+  updatedAt: string;
+  urlImage: string;
+  __v: number;
+  _id: string;
+}
 
 //typing events
 export interface InputEventUploadFileInterface extends Event {
