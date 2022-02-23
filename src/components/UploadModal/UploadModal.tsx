@@ -11,15 +11,12 @@ import {
   InputEventInputTextInterface,
 } from "../../types";
 import { uploadImage } from "../../api";
-// import {
-//   unDisplayUploadAction,
-//   realoadHomeAction,
-// } from "../../redux/displaysReducer/action";
-// import { uploadGif } from "../../services/serverCalls/index";
+import { hideAllModasAction } from "../../redux/modalReducer/actions";
+
 import Spinner from "../../components/Spinner";
 import FileInput from "../FileInput";
 function UploadModal() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const { data } = useSelector((state) => state.userReducer);
   const [isCharged, setIsCharged] = useState(false);
   const [isCharging, setIsCharging] = useState(false);
@@ -80,7 +77,10 @@ function UploadModal() {
 
   return (
     <>
-      <div onClick={() => null} className="modal-background"></div>
+      <div
+        onClick={() => dispatch(hideAllModasAction())}
+        className="modal-background"
+      ></div>
 
       <div className="track-upload">
         <form onSubmit={send}>
