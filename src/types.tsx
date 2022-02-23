@@ -1,3 +1,4 @@
+//typing custom components
 export interface inputTextTypeProps {
   type: string;
   id: string;
@@ -16,6 +17,25 @@ export interface ButtonProps {
   typ: "button" | "submit" | "reset" | undefined;
   title: string;
 }
+//typing server calls
+export interface createImageApiCallType {
+  // owner: string;
+  author: string;
+  title: string;
+  urlImage: string;
+}
+export interface idParamApiCallType {
+  // owner: string;
+  id: string;
+}
+export interface updateApiCallType {
+  // owner: string;
+  id: string;
+  author: string;
+  title: string;
+}
+
+//typing events
 export interface InputEventUploadFileInterface extends Event {
   target: HTMLInputElement & EventTarget & { files: FileList };
 }

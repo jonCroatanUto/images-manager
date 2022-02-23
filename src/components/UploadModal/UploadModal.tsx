@@ -10,6 +10,7 @@ import {
   InputEventUploadFileInterface,
   InputEventInputTextInterface,
 } from "../../types";
+import { uploadImage } from "../../api";
 // import {
 //   unDisplayUploadAction,
 //   realoadHomeAction,
@@ -26,21 +27,23 @@ function UploadModal() {
   const [ownerData, setOwnerData] = useState();
 
   const [fileData, setFileData] = useState({
-    owner: "data.data._id",
+    // owner:"id"
     title: "",
     author: "",
-    genre: "",
-    urlGif: "",
+    // genre: "",
+    urlImage: "",
   });
   // const [file, setFile] = useState("");
   function send(e: React.FormEvent) {
     e.preventDefault();
     setIsCharging(true);
-    // uploadGif(fileData).then((res) => {
-    //   dispatch(realoadHomeAction(true));
-    //   setIsCharging(false);
-    //   dispatch(unDisplayUploadAction());
-    // });
+    console.log(fileData);
+    uploadImage(fileData).then((res) => {
+      console.log(res);
+      // dispatch(realoadHomeAction(true));
+      // setIsCharging(false);
+      // dispatch(unDisplayUploadAction());
+    });
   }
   function handleChange(e: InputEventInputTextInterface) {
     setFileData({
@@ -73,7 +76,7 @@ function UploadModal() {
 
         setFileData({
           ...fileData,
-          urlGif: data.url,
+          urlImage: data.url,
         });
         setIsCharging(false);
         setIsCharged(true);
@@ -136,7 +139,7 @@ function UploadModal() {
                       File ready click SEND to confirm
                     </h3>
                     <img
-                      src={fileData.urlGif}
+                      src={fileData.urlImage}
                       alt="uploaded"
                       className="existing-image"
                     />
@@ -151,7 +154,7 @@ function UploadModal() {
                           <FileInput
                             type="file"
                             name="file"
-                            handleChange={(e) => handleGifUploadChange}
+                            handleChange={(e: any) => handleGifUploadChange(e)}
                           />
                         </Col>
                         <Col xs={3} md={3} lg={3}></Col>
