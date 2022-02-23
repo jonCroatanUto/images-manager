@@ -50,7 +50,13 @@ export interface ImageParametersType {
   __v: number;
   _id: string;
 }
-
+//typing reducers
+export interface typeStateModalsReducer {
+  isUploadModalDisplayed: boolean;
+  isDeleteConfirmModalDisplayed: boolean;
+  isUpdateModalDisplayed: boolean;
+  type: string;
+}
 //typing events
 export interface InputEventUploadFileInterface extends Event {
   target: HTMLInputElement & EventTarget & { files: FileList };

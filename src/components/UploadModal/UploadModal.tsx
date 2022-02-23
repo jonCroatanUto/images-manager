@@ -51,12 +51,6 @@ function UploadModal() {
       [e.target.name]: e.target.value,
     });
   }
-  // function handleChangeSelect(e) {
-  //   setFileData({
-  //     ...fileData,
-  //     genre: e.value,
-  //   });
-  // }
 
   function handleGifUploadChange(e: InputEventUploadFileInterface) {
     //e.preventDefault();
@@ -83,20 +77,6 @@ function UploadModal() {
         console.log("reponse", fileData);
       });
   }
-  // const options = [
-  //   { value: "Humor", label: "Humor" },
-  //   { value: "Films", label: "Films" },
-  //   { value: "Party", label: "Party" },
-  //   { value: "Drama", label: "Drama" },
-  // ];
-  // const customStyles = {
-  //   option: (provided: any) => ({
-  //     ...provided,
-  //     borderBottom: "1px dotted pink",
-  //     color: "green",
-  //     padding: 20,
-  //   }),
-  // };
 
   return (
     <>

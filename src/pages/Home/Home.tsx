@@ -4,6 +4,7 @@ import { getAllImages } from "../../api";
 import { Container, Row, Col } from "react-bootstrap";
 import ImageItem from "../../components/ImageItem";
 import { ImageParametersType } from "../../types";
+
 function Home() {
   const [imagesData, setImagesData] = useState<ImageParametersType[]>([]);
   const [isDataSet, setisDataSet] = useState(false);

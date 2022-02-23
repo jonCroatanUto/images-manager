@@ -1,5 +1,5 @@
 import initialState from "./state";
-import { FETCH_DATA_USER, RELOAD_USER_DATA } from "./types";
+import { FETCH_DATA_USER, RELOAD_USER_DATA } from "./type";
 interface Action {
   payload: {
     _id: string;

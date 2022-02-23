@@ -1,4 +1,4 @@
-import { FETCH_DATA_USER, RELOAD_USER_DATA } from "./types";
+import { FETCH_DATA_USER, RELOAD_USER_DATA } from "./type";
 
 export const fetchuUserDataAction = (value: {
   _id: string;
