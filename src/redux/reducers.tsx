@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import userReducer from "./userReducer/reducer";
+import imageReducer from "./imageDataReducer/reducer";
 import modalReducer from "./modalReducer/reducer";
 
 export const reducers = combineReducers({
-  userReducer: userReducer,
+  imageReducer: imageReducer,
   modalReducer: modalReducer,
 });
 export type RootState = ReturnType<typeof reducers>;

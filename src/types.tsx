@@ -44,7 +44,7 @@ export interface ImageParametersType {
   createdAt: string;
   genre: string;
   title: string;
-  totalLikes: [];
+  totalLikes: never[];
   updatedAt: string;
   urlImage: string;
   __v: number;

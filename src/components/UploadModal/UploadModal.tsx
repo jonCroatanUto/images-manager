@@ -5,14 +5,14 @@ import ModalHoc from "../../hocs/ModalHoc/ModalHoc";
 //import Button from "../Button";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import {
   InputEventUploadFileInterface,
   InputEventInputTextInterface,
 } from "../../types";
 import { uploadImage } from "../../api";
 import { hideAllModalsAction } from "../../redux/modalReducer/actions";
-
+import { reloadUImageDataAction } from "../../redux/imageDataReducer/actions";
 import Spinner from "../../components/Spinner";
 import FileInput from "../FileInput";
 function UploadModal() {
@@ -38,8 +38,9 @@ function UploadModal() {
     uploadImage(fileData).then((res) => {
       console.log(res);
       // dispatch(realoadHomeAction(true));
-      // setIsCharging(false);
-      // dispatch(unDisplayUploadAction());
+      setIsCharging(false);
+      dispatch(reloadUImageDataAction(false));
+      dispatch(hideAllModalsAction());
     });
   }
   function handleChange(e: InputEventInputTextInterface) {
@@ -64,7 +65,7 @@ function UploadModal() {
       .post(`https://api.cloudinary.com/v1_1/daiejrif5/image/upload/`, form)
       .then((res: any) => {
         const { data } = res;
-
+        console.log(data);
         setFileData({
           ...fileData,
           urlImage: data.url,
@@ -76,39 +77,35 @@ function UploadModal() {
   }
 
   return (
-    <>
-      {/* <div
-        onClick={() => dispatch(hideAllModasAction())}
-        className="modal-background"
-      ></div> */}
+    <form onSubmit={send}>
+      <Container>
+        <Row className="justify-content-center">
+          <Col></Col>
+          <Col className="text-center">
+            <h2 className="titleUpdate">Upload track</h2>
+            <InputText
+              type="text"
+              id="title"
+              label="Title "
+              value={fileData.title}
+              placeholder="Type title"
+              handleChange={handleChange}
+            />
+            <InputText
+              type="text"
+              id="author"
+              label="Author "
+              value={fileData.author}
+              placeholder="Type author"
+              handleChange={handleChange}
+            />
+          </Col>
+          <Col></Col>
+        </Row>
 
-      {/* <div className="track-upload"> */}
-      <form onSubmit={send}>
-        <Container>
-          <Row className="justify-content-center">
-            <Col className="text-center">
-              <h2 className="titleUpdate">Upload track</h2>
-              <InputText
-                type="text"
-                id="title"
-                label="Title "
-                value={fileData.title}
-                placeholder="Type title"
-                handleChange={handleChange}
-              />
-              <InputText
-                type="text"
-                id="author"
-                label="Author "
-                value={fileData.author}
-                placeholder="Type author"
-                handleChange={handleChange}
-              />
-            </Col>
-          </Row>
-
-          <Row className="justify-content-center">
-            <Col className="text-center">
+        <Row className="justify-content-center">
+          <Col className="text-center">
+            <div style={{ marginTop: "40px" }}>
               {isCharging ? (
                 <div className="spinnerWrapper">
                   <Spinner />
@@ -126,46 +123,52 @@ function UploadModal() {
                 </>
               ) : (
                 <>
-                  <h5 className="titleUpdate">Upload Gif:</h5>
                   <Container>
                     <Row className="justify-content-center">
-                      <Col xs={5} md={5} lg={5}></Col>
-                      <Col xs={4} md={4} lg={4} className="auto">
+                      <Col></Col>
+                      <Col>
+                        <h5 className="titleUpdate">Upload Gif:</h5>
+                      </Col>
+                      <Col className="text-center">
                         <FileInput
                           type="file"
                           name="file"
                           handleChange={(e: any) => handleGifUploadChange(e)}
                         />
                       </Col>
-                      <Col xs={3} md={3} lg={3}></Col>
+                      <Col></Col>
                     </Row>
                   </Container>
                 </>
               )}
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            {isCharged ? (
-              <>
-                <Col className="text-center">
-                  <button type="submit">submit</button>
-                </Col>
-                <Col className="text-center">
-                  {/* <Button
-                      handleEdit={() => null}
-                      title="CANCEL"
+            </div>
+          </Col>
+        </Row>
+        <div style={{ marginTop: "50px" }}>
+          <Container>
+            <Row className="justify-content-center">
+              {isCharged ? (
+                <>
+                  <Col className="text-center">
+                    <Button type="submit">SEND</Button>
+                  </Col>
+                  <Col className="text-center">
+                    <Button
                       type="button"
-                    /> */}
-                </Col>
-              </>
-            ) : (
-              <Col className="text-center"></Col>
-            )}
-          </Row>
-        </Container>
-      </form>
-      {/* </div> */}
-    </>
+                      onClick={() => dispatch(hideAllModalsAction())}
+                    >
+                      CANCEL
+                    </Button>
+                  </Col>
+                </>
+              ) : (
+                <Col className="text-center"></Col>
+              )}
+            </Row>
+          </Container>
+        </div>
+      </Container>
+    </form>
   );
 }
 

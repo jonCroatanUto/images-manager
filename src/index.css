@@ -12,5 +12,6 @@ code {
     monospace;
 }
 :root {
-  --global-modal-color: grey;
+  --global-modal-color: rgb(233, 243, 245);
+  --global-color-font: rgb(8, 8, 8);
 }

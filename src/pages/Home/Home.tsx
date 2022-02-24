@@ -1,28 +1,42 @@
 import React, { useEffect, useState } from "react";
 import UploadModal from "../../components/UploadModal";
+import UpdateModal from "../../components/UpdateModal";
+import DeleteModal from "../../components/DeleteModal";
 import { getAllImages } from "../../api";
 import { Container, Row, Col } from "react-bootstrap";
 import ImageItem from "../../components/ImageItem";
 import { ImageParametersType } from "../../types";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/reducers";
-function Home() {
-  const { isUploadModalDisplayed } = useSelector(
-    (state: RootState) => state.modalReducer
-  );
-  const [imagesData, setImagesData] = useState<ImageParametersType[]>([]);
-  const [isDataSet, setisDataSet] = useState(false);
-  useEffect(() => {
-    getAllImages().then((res) => {
-      const { images } = res.data;
-      setImagesData(images);
-      setisDataSet(true);
-    });
-  }, []);
+import {
+  fetchuImageDataAction,
+  reloadUImageDataAction,
+} from "../../redux/imageDataReducer/actions";
 
-  function debug() {
-    console.log(imagesData);
-  }
+function Home() {
+  const dispatch = useDispatch();
+  const {
+    isUploadModalDisplayed,
+    isDeleteConfirmModalDisplayed,
+    isUpdateModalDisplayed,
+  } = useSelector((state: RootState) => state.modalReducer);
+  const { imagesData, reloadImageData } = useSelector(
+    (state: RootState) => state.imageReducer
+  );
+
+  const [isDataSet, setisDataSet] = useState(false);
+
+  useEffect(() => {
+    if (!reloadImageData) {
+      getAllImages().then((res) => {
+        const { images } = res.data;
+
+        dispatch(fetchuImageDataAction(images));
+        setisDataSet(true);
+        dispatch(reloadUImageDataAction(true));
+      });
+    }
+  }, [reloadImageData]);
 
   return (
     <>
@@ -49,6 +63,8 @@ function Home() {
         </Row>
       </Container>
       {isUploadModalDisplayed ? <UploadModal /> : <div></div>}
+      {isUpdateModalDisplayed ? <UpdateModal /> : <div></div>}
+      {isDeleteConfirmModalDisplayed ? <DeleteModal /> : <div></div>}
     </>
   );
 }
