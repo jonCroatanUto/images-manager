@@ -13,11 +13,14 @@ import "./itemStyles.css";
 function ImageItem({ id, title, urlImage }: ItemGridParametersType) {
   const dispatch = useDispatch();
   function displayConfirmDelete() {
+    console.log("delete");
     // deleteImage({ id: id }).then((res) => console.log(res));
-    dispatch(displayDeleteAction());
+    dispatch(displayDeleteAction({ isDispalyDelete: true, id: id }));
   }
   function displayUpdate() {
-    dispatch(displayUpdateAction());
+    dispatch(
+      displayUpdateAction({ isDispalyUpdate: true, id: id, title: title })
+    );
   }
   return (
     <Card style={{ width: "18rem" }}>

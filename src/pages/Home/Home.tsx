@@ -37,7 +37,8 @@ function Home() {
       });
     }
   }, [reloadImageData]);
-
+  const { isDispalyDelete } = isDeleteConfirmModalDisplayed;
+  const { isDispalyUpdate } = isUpdateModalDisplayed;
   return (
     <>
       <Container>
@@ -63,8 +64,8 @@ function Home() {
         </Row>
       </Container>
       {isUploadModalDisplayed ? <UploadModal /> : <div></div>}
-      {isUpdateModalDisplayed ? <UpdateModal /> : <div></div>}
-      {isDeleteConfirmModalDisplayed ? <DeleteModal /> : <div></div>}
+      {isDispalyUpdate ? <UpdateModal /> : <div></div>}
+      {isDispalyDelete ? <DeleteModal /> : <div></div>}
     </>
   );
 }

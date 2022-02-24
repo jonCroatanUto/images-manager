@@ -6,15 +6,18 @@ import {
   HIDE_ALL_MODALS,
 } from "./type";
 import { typeStateModalsReducer } from "../../types";
-
-const userReducer = (state = initialState, action: typeStateModalsReducer) => {
+interface Action {
+  payload: typeStateModalsReducer;
+  type: string;
+}
+const userReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case DISPLAY_UPLOAD:
       return { ...state, isUploadModalDisplayed: true };
     case DISPLAY_UPDATE:
-      return { ...state, isDeleteConfirmModalDisplayed: true };
+      return { ...state, isUpdateModalDisplayed: action.payload };
     case DISPLAY_DELETE:
-      return { ...state, isUpdateModalDisplayed: true };
+      return { ...state, isDeleteConfirmModalDisplayed: action.payload };
     case HIDE_ALL_MODALS:
       return initialState;
 

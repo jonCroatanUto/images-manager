@@ -1,6 +1,6 @@
 const initialState = {
   isUploadModalDisplayed: false,
-  isDeleteConfirmModalDisplayed: false,
-  isUpdateModalDisplayed: false,
+  isDeleteConfirmModalDisplayed: { isDispalyDelete: false, id: "" },
+  isUpdateModalDisplayed: { isDispalyUpdate: false, id: "", title: "" },
 };
 export default initialState;

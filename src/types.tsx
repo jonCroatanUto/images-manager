@@ -53,9 +53,22 @@ export interface ImageParametersType {
 //typing reducers
 export interface typeStateModalsReducer {
   isUploadModalDisplayed: boolean;
-  isDeleteConfirmModalDisplayed: boolean;
-  isUpdateModalDisplayed: boolean;
+  isDeleteConfirmModalDisplayed: { isDispalyDelete: boolean; id: string };
+  isUpdateModalDisplayed: {
+    isDispalyUpdate: boolean;
+    id: string;
+    title: string;
+  };
   type: string;
+}
+export interface updateTypes {
+  isDispalyUpdate: boolean;
+  id: string;
+  title: string;
+}
+export interface deleteTypes {
+  isDispalyDelete: boolean;
+  id: string;
 }
 
 //typing events
