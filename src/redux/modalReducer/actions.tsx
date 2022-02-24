@@ -14,6 +14,6 @@ export const displayUpdateAction = () => ({
 export const displayDeleteAction = () => ({
   type: DISPLAY_DELETE,
 });
-export const hideAllModasAction = () => ({
+export const hideAllModalsAction = () => ({
   type: HIDE_ALL_MODALS,
 });

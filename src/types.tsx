@@ -57,6 +57,7 @@ export interface typeStateModalsReducer {
   isUpdateModalDisplayed: boolean;
   type: string;
 }
+
 //typing events
 export interface InputEventUploadFileInterface extends Event {
   target: HTMLInputElement & EventTarget & { files: FileList };

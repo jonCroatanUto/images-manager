@@ -8,7 +8,7 @@ function FileInput({ type, name, handleChange }: inputFileTypeProps) {
       <input
         type={type}
         name={name}
-        onChange={(e: React.ChangeEvent) => handleChange(e)}
+        onChange={(e: React.ChangeEvent) => handleChange}
         className="custom-file-input"
       />
     </div>
