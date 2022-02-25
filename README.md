@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+# image-manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app it allows to manage your image!! I hope you all enjoyed!!!
 
-## Available Scripts
+## 🚀 to start
 
-In the project directory, you can run:
+to start to ejecuting this code you should:
 
-### `npm start`
+- Open your terminal in a concret folder
+- Ejecute the comand:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+git clone https://github.com/jonCroatanUto/images-manager.git
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Go inside the folder `image-manager` and run:
 
-### `npm test`
+```
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Create a `.env` file adding in it:
 
-### `npm run build`
+```
+REACT_APP_SERVER_PRODUCTION=https://memes-and-gifs-api.herokuapp.com/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can found this app deployed [here](https://testing-image-manager.netlify.app) :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## server side
 
-### `npm run eject`
+- the server side that use this site is deployed [here](https://memes-and-gifs-api.herokuapp.com/)
+- this server is used for other aplications
+- You will found the files that use this concret site in :
+  - imagesController
+  - imagesRoutes
+  - imagesModals
+- You can found the server code in [this github repo](https://github.com/jonCroatanUto/giftyfy.git)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## database
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- database is deployed in Atlas mongoDB platform
+- is connected with server by mongoose
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<pre>  
+├───.github     <i>// Github actions config files </i>
+├───public
+├───types.tsx
+├───index.css
+└───src	
+    ├───components
+    |        ├───DeleteModal
+    |        ├───FileInput
+    |        ├───ImageItem
+    |        ├───InputText
+    |        ├───Navbar
+    |        ├───Spinner  
+    |        ├───UploadModal    
+    |        └───UpdateModal
+    ├───pages
+    |       ├───Home
+    |       ├───Login           <i>//not Aviable</i>
+    |       └───Register        <i>//not Aviable</i>
+    | 
+    ├─--hocs 
+    |       └───ModalHoc
+    |               
+    └───redux
+          ├───modalReducer
+          └───ImageDataReducer
+   
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+</pre>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 🧭 App navigation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Home page 🗺
+
+Where it's displayed all image by a responsive way using `React-bootstrap`
+
+## ImageDataReducer
+
+By setting the image data in this reducer my aplication is able to observe de modification that recive this data , as an update or deleing files. By this way , the Home page is syncronized with database and refresh the images displayed
+
+## modalReducer
+
+It allows open the modals from any place of the site and pass to the modal the necessary information.
+
+## ModalHoc
+
+It give the same format to all the content that i want to put inside a modal. That save me to write a lot of repetitive code.
+
+# ✨ Wishlist
+
+- Login and Register
+- Do a proflie page
+- As a user, see the owner of others images ,chat with them, give likes to images
+- Stadistic follow of your activity as user
+
+# 🖇️ Contributing
+
+If you want to contribute, please fork the repository, create a new branch whit your contribution, and push the branch as a pull requests.
