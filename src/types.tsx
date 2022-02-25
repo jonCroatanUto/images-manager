@@ -31,7 +31,7 @@ export interface idParamApiCallType {
 export interface updateApiCallType {
   // owner: string;
   id: string;
-  author: string;
+
   title: string;
 }
 export interface ItemGridParametersType {

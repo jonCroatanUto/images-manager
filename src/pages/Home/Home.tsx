@@ -48,7 +48,7 @@ function Home() {
               const { _id, urlImage, title } = image;
 
               return (
-                <Col key={index} xs={10} md={5} lg={3}>
+                <Col key={index} xs={10} md={5} lg={4}>
                   <ImageItem
                     key={_id}
                     id={_id}
