@@ -1,0 +1,2 @@
+export const FETCH_DATA_IMAGE = "FETCH_DATA_IMAGE";
+export const RELOAD_IMAGE_DATA = "RELOAD_IMAGE_DATA";

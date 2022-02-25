@@ -1,0 +1,4 @@
+export const DISPLAY_UPLOAD = "DIPLAY_UPLOAD";
+export const DISPLAY_UPDATE = "DIPLAY_UPDATE";
+export const DISPLAY_DELETE = "DIPLAY_DELETE";
+export const HIDE_ALL_MODALS = "HIDE_ALL_MODALS";
